@@ -1,0 +1,16 @@
+# Compiled output
+/dist/
+/.angular/
+
+# Dependency directories
+/node_modules/
+
+# IDEs and editors
+/.vscode/
+.idea/
+*.swp
+*.swo
+
+# Operating System
+.DS_Store
+Thumbs.db
