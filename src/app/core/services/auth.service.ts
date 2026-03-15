@@ -12,13 +12,12 @@ export class AuthService {
     private currentSessionSubject = new BehaviorSubject<Session | null>(null);
 
     constructor() {
-        if (environment.supabaseUrl && environment.supabaseUrl !== 'YOUR_SUPABASE_URL' && environment.supabaseAnonKey && environment.supabaseAnonKey !== 'YOUR_SUPABASE_ANON_KEY') {
-            this.supabase = createClient(environment.supabaseUrl, environment.supabaseAnonKey);
-            this.initSession();
-        } else {
-            console.warn('Supabase credentials not provided. Auth will not work functionality-wise.');
-            this.supabase = {} as any; // Fallback to prevent crash
+        if (!environment.supabaseUrl || !environment.supabaseAnonKey || environment.supabaseUrl === 'YOUR_SUPABASE_URL') {
+            throw new Error('Supabase credentials are not provided. Please check your .env file and restart the server.');
         }
+
+        this.supabase = createClient(environment.supabaseUrl, environment.supabaseAnonKey);
+        this.initSession();
     }
 
     private async initSession() {

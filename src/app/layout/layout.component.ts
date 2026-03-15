@@ -4,10 +4,10 @@ import { AuthService } from '../core/services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-    selector: 'app-layout',
-    standalone: true,
-    imports: [RouterOutlet],
-    template: `
+  selector: 'app-layout',
+  standalone: true,
+  imports: [RouterOutlet],
+  template: `
     <div class="h-screen flex overflow-hidden bg-gray-100">
       <!-- Sidebar -->
       <div class="hidden md:flex md:flex-shrink-0">
@@ -20,6 +20,15 @@ import { Router } from '@angular/router';
               <nav class="mt-5 flex-1 px-2 bg-white space-y-1">
                 <a href="#" class="bg-gray-100 text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
                   Dashboard
+                </a>
+                <a href="#" class="bg-gray-100 text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                  Vehicles
+                </a>
+                <a href="#" class="bg-gray-100 text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                  Earnings
+                </a>
+                <a href="#" class="bg-gray-100 text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                  Expenses
                 </a>
               </nav>
             </div>
@@ -52,11 +61,11 @@ import { Router } from '@angular/router';
   `
 })
 export class LayoutComponent {
-    private authService = inject(AuthService);
-    private router = inject(Router);
+  private authService = inject(AuthService);
+  private router = inject(Router);
 
-    async logout() {
-        await this.authService.logout();
-        this.router.navigate(['/login']);
-    }
+  async logout() {
+    await this.authService.logout();
+    this.router.navigate(['/login']);
+  }
 }
